@@ -1,0 +1,396 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #0a0e27;
+    color: #00f0ff;
+    font-family: "Orbitron", system-ui;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes gridMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 0 60px;
+    background: rgba(10, 14, 39, 0.95);
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 5px 30px rgba(0, 240, 255, 0.2);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #00f0ff, #ff00e6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    text-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.back-link {
+    color: #00f0ff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    padding: 10px 25px;
+    border: 2px solid rgba(0, 240, 255, 0.3);
+    border-radius: 10px;
+    background: rgba(0, 240, 255, 0.05);
+}
+
+.back-link:hover {
+    border-color: #ff00e6;
+    color: #ff00e6;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255, 0, 230, 0.4);
+}
+
+.signup-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 480px;
+    padding: 50px 45px;
+    background: rgba(10, 14, 39, 0.85);
+    border: 2px solid rgba(0, 240, 255, 0.3);
+    border-radius: 25px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 60px rgba(0, 240, 255, 0.25);
+    animation: fadeInUp 0.8s ease;
+    margin: 20px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.signup-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.signup-header h1 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #00f0ff, #ff00e6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.signup-header p {
+    color: rgba(0, 240, 255, 0.65);
+    font-size: 0.88rem;
+    font-weight: 400;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: #00f0ff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(0, 240, 255, 0.05);
+    border: 2px solid rgba(0, 240, 255, 0.3);
+    border-radius: 12px;
+    color: white;
+    font-family: "Orbitron", system-ui;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-group input::placeholder {
+    color: rgba(0, 240, 255, 0.4);
+}
+
+.form-group input:focus {
+    border-color: #ff00e6;
+    background: rgba(0, 240, 255, 0.1);
+    box-shadow: 0 0 20px rgba(255, 0, 230, 0.3);
+}
+
+.continue-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.25), rgba(255, 0, 230, 0.25));
+    border: 2px solid #00f0ff;
+    border-radius: 12px;
+    color: white;
+    font-family: "Orbitron", system-ui;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
+    margin-bottom: 20px;
+}
+
+.continue-btn:hover {
+    transform: translateY(-3px);
+    border-color: #ff00e6;
+    box-shadow: 0 0 45px rgba(255, 0, 230, 0.65);
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.35), rgba(255, 0, 230, 0.35));
+}
+
+.continue-btn:active {
+    transform: translateY(0);
+}
+
+.create-account-link {
+    text-align: center;
+    margin-bottom: 25px;
+    color: rgba(0, 240, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.create-account-link a {
+    color: #00f0ff;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.create-account-link a:hover {
+    color: #ff00e6;
+    text-shadow: 0 0 10px rgba(255, 0, 230, 0.6);
+}
+
+.divider {
+    text-align: center;
+    margin: 28px 0;
+    position: relative;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.3), transparent);
+}
+
+.divider span {
+    position: relative;
+    background: rgba(10, 14, 39, 0.95);
+    padding: 0 18px;
+    color: rgba(0, 240, 255, 0.55);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 13px 20px;
+    background: rgba(0, 240, 255, 0.03);
+    border: 1.5px solid rgba(0, 240, 255, 0.25);
+    border-radius: 12px;
+    color: white;
+    font-family: "Orbitron", system-ui;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: none;
+    letter-spacing: 0.5px;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(0, 240, 255, 0.08);
+    border-color: #ff00e6;
+    box-shadow: 0 5px 25px rgba(255, 0, 230, 0.35);
+}
+
+.social-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 22px;
+    color: rgba(0, 240, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.login-link a {
+    color: #ff00e6;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.login-link a:hover {
+    text-shadow: 0 0 10px rgba(255, 0, 230, 0.6);
+}
+
+.trouble-link {
+    text-align: center;
+    margin-top: 18px;
+}
+
+.trouble-link a {
+    color: rgba(0, 240, 255, 0.5);
+    font-size: 0.82rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.trouble-link a:hover {
+    color: #00f0ff;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+}
+
+.particle {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: #00f0ff;
+    border-radius: 50%;
+    opacity: 0;
+    animation: float 6s infinite ease-in-out;
+    z-index: 5;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+}
+
+@keyframes float {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(50px);
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    .signup-container {
+        padding: 40px 30px;
+        margin: 20px;
+    }
+
+    .signup-header h1 {
+        font-size: 1.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        flex-wrap: wrap;
+        padding: 15px;
+    }
+
+    .signup-container {
+        padding: 30px 20px;
+    }
+
+    .signup-header h1 {
+        font-size: 1.7rem;
+    }
+
+    .form-group input {
+        font-size: 0.9rem;
+    }
+
+    .continue-btn {
+        font-size: 0.95rem;
+    }
+}
